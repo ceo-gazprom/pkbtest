@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + "." + "cb9a02b1ceb8c946983f" + ".bundle.js"
+/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + "." + "4d99fc7ffdac8bcbb230" + ".bundle.js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -385,19 +385,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ \"./src/App.vue\");\n/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ \"./src/router.js\");\n\n\n\n\n\n//Получаем данные от сервера\n\nnew vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n  render: (h) => h(_App_vue__WEBPACK_IMPORTED_MODULE_1__[\"default\"]),\n  el: '#app',\n  router: _router__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  data: {\n    searchQuery: '',\n    gridColumns: ['name', 'power'],\n    gridData: [\n      { name: 'Chuck Norris', power: Infinity },\n      { name: 'Bruce Lee', power: 9000 },\n      { name: 'Jackie Chan', power: 7000 },\n      { name: 'Jet Li', power: 8000 }\n    ]\n  }\n});\n\n//# sourceURL=webpack:///./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ \"./src/App.vue\");\n/* harmony import */ var _router_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router/index */ \"./src/router/index.js\");\n\n\n\n\n\n\nnew vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]({\n  render: (h) => h(_App_vue__WEBPACK_IMPORTED_MODULE_1__[\"default\"]),\n  el: '#app',\n  router: _router_index__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ }),
 
-/***/ "./src/router.js":
-/*!***********************!*\
-  !*** ./src/router.js ***!
-  \***********************/
+/***/ "./src/router/index.js":
+/*!*****************************!*\
+  !*** ./src/router/index.js ***!
+  \*****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ \"./node_modules/vue-router/dist/vue-router.esm.js\");\n/* harmony import */ var _components_PageNotFoundPage_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/PageNotFoundPage.vue */ \"./src/components/PageNotFoundPage.vue\");\n/***\n * Front-end router\n * Позволяет реализовать SPA, без перезагрузки\n */\n\n\n\nvue__WEBPACK_IMPORTED_MODULE_0__[\"default\"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\n\n\n\n\nconst OverviewPage = () =>\n  Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./components/OverviewPage.vue */ \"./src/components/OverviewPage.vue\"));\nconst PersonPage = () =>\n  Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./components/PersonPage.vue */ \"./src/components/PersonPage.vue\"));\nconst DebtPage = () =>\n  Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./components/DebtPage.vue */ \"./src/components/DebtPage.vue\"));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__[\"default\"]({\n  mode: 'history',\n  scrollBehavior: () => ({\n    y: 0\n  }),\n  routes: [{\n    // Страница должников\n    path: '/',\n    component: OverviewPage,\n  }, {\n    // Стрица Должников\n    path: '/persons',\n    component: PersonPage,\n  }, {\n    // Стрица зодолженностей\n    path: '/debts',\n    component: DebtPage,\n  }, {\n    // Страница не найдена\n    path: '*',\n    component: _components_PageNotFoundPage_vue__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  }]\n}));\n\n//# sourceURL=webpack:///./src/router.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ \"./node_modules/vue/dist/vue.runtime.esm.js\");\n/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ \"./node_modules/vue-router/dist/vue-router.esm.js\");\n/* harmony import */ var _components_PageNotFoundPage_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/PageNotFoundPage.vue */ \"./src/components/PageNotFoundPage.vue\");\n/***\n * Front-end router\n * Позволяет реализовать SPA, без перезагрузки\n */\n\n\n\nvue__WEBPACK_IMPORTED_MODULE_0__[\"default\"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\n\n\n\n\nconst OverviewPage = () =>\n  Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../components/OverviewPage.vue */ \"./src/components/OverviewPage.vue\"));\nconst PersonPage = () =>\n  Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../components/PersonPage.vue */ \"./src/components/PersonPage.vue\"));\nconst DebtPage = () =>\n  Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../components/DebtPage.vue */ \"./src/components/DebtPage.vue\"));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__[\"default\"]({\n  mode: 'history',\n  scrollBehavior: () => ({\n    y: 0\n  }),\n  routes: [{\n    // Страница должников\n    path: '/',\n    component: OverviewPage,\n  }, {\n    // Стрица Должников\n    path: '/persons',\n    component: PersonPage,\n  }, {\n    // Стрица зодолженностей\n    path: '/debts',\n    component: DebtPage,\n  }, {\n    // Страница не найдена\n    path: '*',\n    component: _components_PageNotFoundPage_vue__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  }]\n}));\n\n//# sourceURL=webpack:///./src/router/index.js?");
 
 /***/ })
 

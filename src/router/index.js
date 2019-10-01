@@ -7,15 +7,15 @@ import Router from 'vue-router';
 
 Vue.use(Router);
 
-import PageNotFoundPage from './components/PageNotFoundPage.vue';
+import PageNotFoundPage from '../components/PageNotFoundPage.vue';
 
 
 const OverviewPage = () =>
-  import('./components/OverviewPage.vue');
+  import('../components/OverviewPage.vue');
 const PersonPage = () =>
-  import('./components/PersonPage.vue');
+  import('../components/PersonPage.vue');
 const DebtPage = () =>
-  import('./components/DebtPage.vue');
+  import('../components/DebtPage.vue');
 
 export default new Router({
   mode: 'history',
