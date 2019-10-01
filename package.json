@@ -7,7 +7,8 @@
   "scripts": {
     "dev:build": "webpack --config webpack.config.dev.js --color --verbose --progress --watch",
     "dev:server": "NODE_ENV=development nodemon -w server server/index.js",
-    "test:server": "./node_modules/mocha/bin/_mocha ./server/test/**/*.test.js"
+    "test:server": "./node_modules/mocha/bin/_mocha ./server/test/**/*.test.js",
+    "start": "NODE_ENV=development nodemon -w server server/index.js"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -33,5 +34,9 @@
     "pg": "^7.12.1",
     "pg-promise": "^9.2.1",
     "vue": "^2.6.10"
+  },
+  "engines": {
+    "node": "0.10.26",
+    "npm": "1.4.3"
   }
 }
