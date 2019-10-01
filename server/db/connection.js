@@ -9,6 +9,7 @@ var fs = require('fs');
 var sql = fs.readFileSync('pkb.sql').toString();
 
 db.query(sql, function(err, result){
+    console.log('Бд импортируется');
     done();
     if(err){
         console.log('error: ', err);
