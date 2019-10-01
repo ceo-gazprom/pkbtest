@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: calendar; Type: TABLE; Schema: public; Owner: wacker
+-- Name: calendar; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.calendar (
@@ -28,10 +28,8 @@ CREATE TABLE public.calendar (
 );
 
 
-ALTER TABLE public.calendar OWNER TO wacker;
-
 --
--- Name: debt; Type: TABLE; Schema: public; Owner: wacker
+-- Name: debt; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.debt (
@@ -42,10 +40,8 @@ CREATE TABLE public.debt (
 );
 
 
-ALTER TABLE public.debt OWNER TO wacker;
-
 --
--- Name: person; Type: TABLE; Schema: public; Owner: wacker
+-- Name: person; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.person (
@@ -54,10 +50,8 @@ CREATE TABLE public.person (
 );
 
 
-ALTER TABLE public.person OWNER TO wacker;
-
 --
--- Name: id_person_seq; Type: SEQUENCE; Schema: public; Owner: wacker
+-- Name: id_person_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.id_person_seq
@@ -68,17 +62,15 @@ CREATE SEQUENCE public.id_person_seq
     CACHE 1;
 
 
-ALTER TABLE public.id_person_seq OWNER TO wacker;
-
 --
--- Name: id_person_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: wacker
+-- Name: id_person_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.id_person_seq OWNED BY public.person.id_person;
 
 
 --
--- Name: payment; Type: TABLE; Schema: public; Owner: wacker
+-- Name: payment; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.payment (
@@ -88,10 +80,8 @@ CREATE TABLE public.payment (
 );
 
 
-ALTER TABLE public.payment OWNER TO wacker;
-
 --
--- Name: portfolio; Type: TABLE; Schema: public; Owner: wacker
+-- Name: portfolio; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.portfolio (
@@ -102,17 +92,15 @@ CREATE TABLE public.portfolio (
 );
 
 
-ALTER TABLE public.portfolio OWNER TO wacker;
-
 --
--- Name: person id_person; Type: DEFAULT; Schema: public; Owner: wacker
+-- Name: person id_person; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person ALTER COLUMN id_person SET DEFAULT nextval('public.id_person_seq'::regclass);
 
 
 --
--- Data for Name: calendar; Type: TABLE DATA; Schema: public; Owner: wacker
+-- Data for Name: calendar; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.calendar VALUES ('2011-01-01');
@@ -154,7 +142,7 @@ INSERT INTO public.calendar VALUES ('2013-12-01');
 
 
 --
--- Data for Name: debt; Type: TABLE DATA; Schema: public; Owner: wacker
+-- Data for Name: debt; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.debt VALUES (1, 1, 1, 100);
@@ -164,13 +152,13 @@ INSERT INTO public.debt VALUES (4, 4, 4, 400);
 
 
 --
--- Data for Name: payment; Type: TABLE DATA; Schema: public; Owner: wacker
+-- Data for Name: payment; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
--- Data for Name: person; Type: TABLE DATA; Schema: public; Owner: wacker
+-- Data for Name: person; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.person VALUES (1, 'Иванов И.И.');
@@ -182,7 +170,7 @@ INSERT INTO public.person VALUES (6, 'Филимонов К.К.');
 
 
 --
--- Data for Name: portfolio; Type: TABLE DATA; Schema: public; Owner: wacker
+-- Data for Name: portfolio; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 INSERT INTO public.portfolio VALUES (1, 'PORTFOLIO_1', '2011-01-01', '2011-01-21');
@@ -192,14 +180,14 @@ INSERT INTO public.portfolio VALUES (4, 'PORTFOLIO_4', '2012-12-01', '2013-06-11
 
 
 --
--- Name: id_person_seq; Type: SEQUENCE SET; Schema: public; Owner: wacker
+-- Name: id_person_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.id_person_seq', 6, true);
 
 
 --
--- Name: debt debt_pkey; Type: CONSTRAINT; Schema: public; Owner: wacker
+-- Name: debt debt_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.debt
@@ -207,7 +195,7 @@ ALTER TABLE ONLY public.debt
 
 
 --
--- Name: person person_pkey; Type: CONSTRAINT; Schema: public; Owner: wacker
+-- Name: person person_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.person
@@ -215,7 +203,7 @@ ALTER TABLE ONLY public.person
 
 
 --
--- Name: debt unique_debt_id_debt; Type: CONSTRAINT; Schema: public; Owner: wacker
+-- Name: debt unique_debt_id_debt; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.debt
@@ -223,7 +211,7 @@ ALTER TABLE ONLY public.debt
 
 
 --
--- Name: debt unique_debt_id_portfolio; Type: CONSTRAINT; Schema: public; Owner: wacker
+-- Name: debt unique_debt_id_portfolio; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.debt
@@ -231,7 +219,7 @@ ALTER TABLE ONLY public.debt
 
 
 --
--- Name: payment unique_payment_id_debt; Type: CONSTRAINT; Schema: public; Owner: wacker
+-- Name: payment unique_payment_id_debt; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.payment
@@ -239,7 +227,7 @@ ALTER TABLE ONLY public.payment
 
 
 --
--- Name: portfolio unique_portfolio_id_portfolio; Type: CONSTRAINT; Schema: public; Owner: wacker
+-- Name: portfolio unique_portfolio_id_portfolio; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.portfolio
@@ -247,7 +235,7 @@ ALTER TABLE ONLY public.portfolio
 
 
 --
--- Name: debt lnk_debt_debt; Type: FK CONSTRAINT; Schema: public; Owner: wacker
+-- Name: debt lnk_debt_debt; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.debt
@@ -255,7 +243,7 @@ ALTER TABLE ONLY public.debt
 
 
 --
--- Name: payment lnk_debt_payment; Type: FK CONSTRAINT; Schema: public; Owner: wacker
+-- Name: payment lnk_debt_payment; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.payment
@@ -263,7 +251,7 @@ ALTER TABLE ONLY public.payment
 
 
 --
--- Name: debt lnk_person_debt; Type: FK CONSTRAINT; Schema: public; Owner: wacker
+-- Name: debt lnk_person_debt; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.debt
