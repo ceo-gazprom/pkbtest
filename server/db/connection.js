@@ -1,6 +1,8 @@
 var pgp = require('pg-promise')(/*options*/);
-var db = pgp("postgres://"+process.env.USER+":password@localhost:5432/pkb");
 
+// dev var db = pgp("postgres://"+process.env.USER+":password@localhost:5432/pkb");
+// prod
+var db = pgp(process.env.DATABASE_URL)
 
 var fs = require('fs');
 
