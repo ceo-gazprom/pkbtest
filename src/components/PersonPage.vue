@@ -35,7 +35,7 @@ export default {
   },
   mounted() {
     Axios
-      .get('http://localhost:3000/api/v1/person')
+      .get('/api/v1/person')
       .then(response => (this.info = response.data.data));
   },
 

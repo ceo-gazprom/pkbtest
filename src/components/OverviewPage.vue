@@ -111,12 +111,12 @@ export default {
   mounted() {
     // Подгружаем данные должников
     Axios
-      .get('http://localhost:3000/api/v1/person/over')
+      .get('/api/v1/person/over')
       .then(response => (this.info = response.data.data));
     
     // Подгружаем данные портфелей
     Axios
-      .get('http://localhost:3000/api/v1/portfolio')
+      .get('/api/v1/portfolio')
       .then(response => (this.portfolio = response.data.data));
   }
 }
