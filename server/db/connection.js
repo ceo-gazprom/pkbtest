@@ -1,21 +1,35 @@
 var pgp = require('pg-promise')(/*options*/);
 
-// dev var db = pgp("postgres://"+process.env.USER+":password@localhost:5432/pkb");
-// prod
-var db = pgp(process.env.DATABASE_URL)
+// Конфиги для подключения к БД
+// Prod
+if (process.env.prod) {
+    var db = pgp(process.env.DATABASE_URL);
+}
+// Dev
+else {
+    var db = pgp("postgres://"+process.env.USER+":password@localhost:5432/pkb");
+}
 
-var fs = require('fs');
+// Проверяем наличие таблиц
+if (process.env.DB_DEPLOY != true) {
+    var table = db.query("SELECT to_regclass('person');");
+}
 
-var sql = fs.readFileSync('pkb.sql').toString();
+table.then(result =>{
+    if (result[0].to_regclass == null) {
+        console.log("Import DB...")
 
-db.query(sql, function(err, result){
-    console.log('Бд импортируется');
-    done();
-    if(err){
-        console.log('error: ', err);
-        process.exit(1);
+        // Загружаем дамб БД
+        var fs = require('fs');
+        var sql = fs.readFileSync('pkb.sql').toString();
+        
+        // Создаем таблицы в БД
+        db.query(sql);
+        process.env.DB_DEPLOY = true;
     }
-    process.exit(0);
+    else {
+        process.env.DB_DEPLOY = true;
+    }
 });
 
 module.exports = db

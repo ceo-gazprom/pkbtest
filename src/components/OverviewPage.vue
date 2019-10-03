@@ -13,8 +13,8 @@
         <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">FIO</th>
-              <th scope="col">Debts</th>
+              <th scope="col">ФИО</th>
+              <th scope="col">Сумма к взысканию</th>
 
             </tr>
         </thead>

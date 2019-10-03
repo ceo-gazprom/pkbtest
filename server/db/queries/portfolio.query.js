@@ -1,16 +1,10 @@
-/**
- * Работа с портфелями
- * ------------------------
- * В этом файле описаны запросы к БД, касающиеся работы с портфелями
- */
 const db = require('../connection');
 
 /**
- * Возвращает список портфелей
- * @return array
+ * Возвращает таблицу портфелей
  */
 function getPortfolio() {
-    return db.any('SELECT * FROM portfolio')
+    return db.any("SELECT * FROM portfolio")
     .then(portfolio => {
         return portfolio;
     })
@@ -19,9 +13,20 @@ function getPortfolio() {
     });
 }
 
-function a(){}
+/**
+ * Возвращает список портфелей в работе
+ */
+function getPortfolioInProgress() {
+    return db.any("SELECT * FROM 'portfolio'")
+    .then(portfolio => {
+        return portfolio;
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
 
 module.exports = {
     getPortfolio,
-    a
+    getPortfolioInProgress
 }

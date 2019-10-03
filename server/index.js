@@ -5,9 +5,11 @@ const logger = require('koa-morgan');
 const path = require('path');
 
 // Маршруты роутера
-const indexRoutes = require('./routes/index.route.js');
+const mainRoutes = require('./routes/main.route.js');
 const personRoutes = require('./routes/person.route.js');
-const portfolioRoutes = require('./routes/portfolio/portfolio.route.js');
+const portfolioRoutes = require('./routes/portfolio.route.js');
+const paymentRoutes = require('./routes/payment.route.js');
+const debtRoutes = require('./routes/debt.route.js');
 
 const app = new Koa();
 
@@ -19,9 +21,11 @@ app.use(mount('/dist', serve(path.join(__dirname, '../dist'))));
 // Подключаем роуты к серверу
 app.use(personRoutes.routes());
 app.use(portfolioRoutes.routes());
+app.use(paymentRoutes.routes());
+app.use(debtRoutes.routes());
 
 // Должен быть последним, перехватывает все запросы не описанные в роутах выше
-app.use(indexRoutes.routes());
+app.use(mainRoutes.routes());
 
 // Слушаем порт окружения или указанный нами
 app.listen(process.env.PORT || 3000);
