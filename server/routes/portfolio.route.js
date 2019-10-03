@@ -22,5 +22,54 @@ router.get(BASE_URL, async (ctx) => {
   }
 })
 
+/**
+ * Возвращает список портфелей в работе
+ */
+router.get(BASE_URL+"/progress", async (ctx) => {
+  try {
+
+    const result = await request.getPortfolioInProgress();
+
+    ctx.status = 200;
+    ctx.body = {
+      data: result,
+    };
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+/**
+ * Возвращает список портфелей и их эффективность
+ */
+router.get(BASE_URL+"/efficiency", async (ctx) => {
+  try {
+
+    const result = await request.getPortfolioEfficiency();
+
+    ctx.status = 200;
+    ctx.body = {
+      data: result,
+    };
+  } catch (err) {
+    console.log(err)
+  }
+})
+
+// Возвращает эффект ивность по датам
+router.get(BASE_URL+"/efficiency/date", async (ctx) => {
+  try {
+
+    const result = await request.getPortfolioEfficiencyDate();
+
+    ctx.status = 200;
+    ctx.body = {
+      data: result,
+    };
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 
 module.exports = router;

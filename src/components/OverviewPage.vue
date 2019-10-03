@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="alert alert-success" role="alert">
       <h4 class="alert-heading">1. Задолженность свыше 150 рублей</h4>
       <hr>
@@ -12,15 +11,12 @@
     <table class="table table-dark">
         <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">ФИО</th>
               <th scope="col">Сумма к взысканию</th>
-
             </tr>
         </thead>
         <tbody>
           <tr v-for="(item, index) in info" :key="index">
-              <td>{{index}}</td>
               <td scope="row">{{item.fio}}</td>
               <td>{{item.debt_sum}}</td>
           </tr>
@@ -39,17 +35,14 @@
     <table class="table table-dark">
         <thead>
             <tr>
-              <th scope="col">id</th>
-              <th scope="col">Portfolio name</th>
-              <th scope="col">Date</th>
-
+              <th scope="col">Дата</th>
+              <th scope="col">Сумма долгов в работе</th>
             </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in portfolio" :key="index">
-              <td>{{item.id_portfolio}}</td>
-              <td scope="row">{{item.portfolio_name}}</td>
-              <td>{{item.sign_date}} - {{item.end_date}}</td>
+          <tr v-for="(item, index) in portfolioProgress" :key="index">
+              <td>{{parseDate(item.cal_date)}}</td>
+              <td scope="row">{{item.sum}}</td>
           </tr>
         </tbody>
     </table>
@@ -62,6 +55,20 @@
         сумма всех платежей/сумма всех долгов
       </p>
     </div>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+              <th scope="col">Имя портфеля</th>
+              <th scope="col">Эффективность</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in portfolioEfficiency" :key="index">
+              <td>{{item.portfolio_name}}</td>
+              <td scope="row">{{item.coalesce}} %</td>
+          </tr>
+        </tbody>
+    </table>
 
     <br><br><br>
     <div class="alert alert-success" role="alert">
@@ -71,6 +78,20 @@
         сумма всех платежей за месяц/портфель в работе за месяц
       </p>
     </div>
+        <table class="table table-dark">
+        <thead>
+            <tr>
+              <th scope="col">Дата</th>
+              <th scope="col">Эффективность портфеля</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in portfolioEfficiencyDate" :key="index">
+              <td>{{parseDate(item.cal_date)}}</td>
+              <td scope="row">{{item.round}} %</td>
+          </tr>
+        </tbody>
+    </table>
 
     <br><br><br>
     <div class="alert alert-success" role="alert">
@@ -79,17 +100,12 @@
     <table class="table table-dark">
         <thead>
             <tr>
-              <th scope="col">id</th>
-              <th scope="col">Portfolio name</th>
-              <th scope="col">Date</th>
-
+              <th scope="col">id задолженности</th>
             </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in portfolio" :key="index">
-              <td>{{item.id_portfolio}}</td>
-              <td scope="row">{{item.portfolio_name}}</td>
-              <td>{{item.sign_date}} - {{item.end_date}}</td>
+          <tr v-for="(item, index) in debtNopayment" :key="index">
+              <td scope="row">{{item.id_debt}}</td>
           </tr>
         </tbody>
     </table>
@@ -105,7 +121,10 @@ export default {
   data() {
     return {
       info: null,
-      portfolio: null,
+      portfolioProgress: null,
+      portfolioEfficiency: null,
+      portfolioEfficiencyDate: null,
+      debtNopayment: null,
     };
   },
   mounted() {
@@ -116,8 +135,34 @@ export default {
     
     // Подгружаем данные портфелей
     Axios
-      .get('/api/v1/portfolio')
-      .then(response => (this.portfolio = response.data.data));
+      .get('/api/v1/portfolio/progress')
+      .then(response => (this.portfolioProgress = response.data.data));
+    
+    // Подгружаем список портфелей и их эфеективность
+    Axios
+      .get('/api/v1/portfolio/efficiency')
+      .then(response => (this.portfolioEfficiency = response.data.data));
+    
+    // Подгружаем эфеективность по месяцам
+    Axios
+      .get('/api/v1/portfolio/efficiency/date')
+      .then(response => (this.portfolioEfficiencyDate = response.data.data));
+
+    // Подгружаем долги без платежей
+    Axios
+      .get('/api/v1/debt/nopayment')
+      .then(response => (this.debtNopayment = response.data.data));
+
+  },
+  methods: {
+    parseDate(date) {
+      function zeroPad(d) {
+        return ("0" + d).slice(-2)
+      }
+      var parsed = new Date(date)
+      return [zeroPad(parsed.getDate()), zeroPad(parsed.getMonth() + 1), parsed.getUTCFullYear(),].join(".");
+
+    }
   }
 }
 </script>

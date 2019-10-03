@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[5],{
 
 /***/ "./node_modules/vue-loader/lib/index.js?!./src/components/PortfolioPage.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************!*\

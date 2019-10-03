@@ -50,7 +50,6 @@ export default {
     },
     // Метод сортировки столбца
     sort(){
-      // this.cahngeSort;
         // Изменение флага сортировки
         this.sortFlag = !this.sortFlag
 

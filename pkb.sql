@@ -146,15 +146,19 @@ INSERT INTO public.calendar VALUES ('2013-12-01');
 --
 
 INSERT INTO public.debt VALUES (1, 1, 1, 100);
-INSERT INTO public.debt VALUES (2, 2, 2, 200);
-INSERT INTO public.debt VALUES (3, 3, 3, 300);
-INSERT INTO public.debt VALUES (4, 4, 4, 400);
+INSERT INTO public.debt VALUES (1, 2, 2, 200);
+INSERT INTO public.debt VALUES (3, 3, 1, 300);
+INSERT INTO public.debt VALUES (4, 4, 3, 400);
 
 
 --
 -- Data for Name: payment; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.payment VALUES (1, 10, '2012-05-12');
+INSERT INTO public.payment VALUES (1, 20, '2012-05-28');
+INSERT INTO public.payment VALUES (3, 30, '2012-06-10');
+INSERT INTO public.payment VALUES (4, 10, '2012-12-01');
 
 
 --
@@ -173,10 +177,10 @@ INSERT INTO public.person VALUES (6, 'Филимонов К.К.');
 -- Data for Name: portfolio; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.portfolio VALUES (1, 'PORTFOLIO_1', '2011-01-01', '2011-01-21');
 INSERT INTO public.portfolio VALUES (2, 'PORTFOLIO_2', '2012-05-06', '2012-09-20');
 INSERT INTO public.portfolio VALUES (3, 'PORTFOLIO_3', '2012-11-21', '2013-03-16');
 INSERT INTO public.portfolio VALUES (4, 'PORTFOLIO_4', '2012-12-01', '2013-06-11');
+INSERT INTO public.portfolio VALUES (1, 'PORTFOLIO_1', '2011-01-01', '2013-01-21');
 
 
 --
@@ -191,7 +195,7 @@ SELECT pg_catalog.setval('public.id_person_seq', 6, true);
 --
 
 ALTER TABLE ONLY public.debt
-    ADD CONSTRAINT debt_pkey PRIMARY KEY (id_person);
+    ADD CONSTRAINT debt_pkey PRIMARY KEY (id_debt);
 
 
 --
@@ -211,51 +215,11 @@ ALTER TABLE ONLY public.debt
 
 
 --
--- Name: debt unique_debt_id_portfolio; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.debt
-    ADD CONSTRAINT unique_debt_id_portfolio UNIQUE (id_portfolio);
-
-
---
--- Name: payment unique_payment_id_debt; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.payment
-    ADD CONSTRAINT unique_payment_id_debt UNIQUE (id_debt);
-
-
---
 -- Name: portfolio unique_portfolio_id_portfolio; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.portfolio
     ADD CONSTRAINT unique_portfolio_id_portfolio UNIQUE (id_portfolio);
-
-
---
--- Name: debt lnk_debt_debt; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.debt
-    ADD CONSTRAINT lnk_debt_debt FOREIGN KEY (id_portfolio) REFERENCES public.debt(id_portfolio) MATCH FULL ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: payment lnk_debt_payment; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.payment
-    ADD CONSTRAINT lnk_debt_payment FOREIGN KEY (id_debt) REFERENCES public.debt(id_debt) MATCH FULL ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: debt lnk_person_debt; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.debt
-    ADD CONSTRAINT lnk_person_debt FOREIGN KEY (id_person) REFERENCES public.person(id_person) MATCH FULL ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --

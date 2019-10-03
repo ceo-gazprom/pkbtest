@@ -29,8 +29,9 @@ function getPersonDebtOver() {
 /**
  * Вывбрать все долги без платежей
  */
-function getDebtWithoutPayment(amount) {
-    return db.any('select d.id_debt, COALESCE(p.payment_sum, 0) FROm debt d left join payment p on d.id_debt = p.id_debt WHERE p.payment_sum is null')
+function getDebtNopayment() {
+    console.log('aue');
+    return db.any("select d.id_debt, COALESCE(p.payment_sum, 0) from debt d left join payment p on d.id_debt = p.id_debt WHERE p.payment_sum is null")
     .then(result => {
         return result;
     })
@@ -42,5 +43,5 @@ function getDebtWithoutPayment(amount) {
 module.exports = {
     getDebt,
     getPersonDebtOver,
-    getDebtWithoutPayment
+    getDebtNopayment
 }
